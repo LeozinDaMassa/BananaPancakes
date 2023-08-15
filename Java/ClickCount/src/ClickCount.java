@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class ClickCount implements ActionListener {
-    private int clicks = 0;
+    private int count = 0;
     private JLabel label;
     private JFrame frame;
     private JPanel panel;
@@ -51,8 +51,8 @@ public class ClickCount implements ActionListener {
 
     // click script
     public void actionPerformed(ActionEvent e) {
-        clicks++;
-        label.setText("Number of clicks:  " + clicks);
+        count++;
+        label.setText("Number of clicks:  " + count);
     }
 
     public static void main(String[] args) {
