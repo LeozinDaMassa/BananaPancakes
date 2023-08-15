@@ -40,13 +40,14 @@ public class ClickCount implements ActionListener {
         panel.add(button);
         panel.add(label);
 
-        // frame
+        // frame outside borders
         frame = new JFrame();
         frame.add(panel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("THE GUI");
         frame.pack();
         frame.setVisible(true);
+
     }
 
     // click script
