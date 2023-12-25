@@ -35,7 +35,7 @@ public class ClickCount implements ActionListener {
         // panel
         panel = new JPanel();
         panel = new MyColorfulPanel();
-        panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
+        panel.setBorder(BorderFactory.createEmptyBorder(50, 80, 50, 80));
         panel.setLayout(new GridLayout(0, 1));
         panel.add(button);
         panel.add(label);
@@ -44,7 +44,7 @@ public class ClickCount implements ActionListener {
         frame = new JFrame();
         frame.add(panel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("THE GUI");
+        frame.setTitle("JUST CLICK IT");
         frame.pack();
         frame.setVisible(true);
 
