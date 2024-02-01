@@ -35,7 +35,7 @@ public class ClickCount implements ActionListener {
         // panel
         panel = new JPanel();
         panel = new MyColorfulPanel();
-        panel.setBorder(BorderFactory.createEmptyBorder(50, 80, 50, 80));
+        panel.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
         panel.setLayout(new GridLayout(0, 1));
         panel.add(button);
         panel.add(label);
@@ -45,15 +45,59 @@ public class ClickCount implements ActionListener {
         frame.add(panel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("JUST CLICK IT");
-        frame.pack();
-        frame.setVisible(true);
 
+        // Add a full-screen button
+        JButton fullScreenButton = new JButton("IMMERSIVE MODE");
+        fullScreenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                toggleFullScreen();
+            }
+        });
+        panel.add(fullScreenButton);
+
+        // Set the frame to full-screen mode
+        GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice graphicsDevice = graphicsEnvironment.getDefaultScreenDevice();
+        if (graphicsDevice.isFullScreenSupported()) {
+            frame.setUndecorated(true); // Remove window decorations
+            frame.setSize(graphicsDevice.getDisplayMode().getWidth(), graphicsDevice.getDisplayMode().getHeight());
+            graphicsDevice.setFullScreenWindow(frame);
+        } else {
+            System.err.println("Full-screen mode not supported");
+            frame.setSize(800, 600); // Set a default size if full-screen mode is not supported
+        }
+
+        frame.setVisible(true);
     }
 
     // click script
     public void actionPerformed(ActionEvent e) {
         count++;
         label.setText("Number of clicks:  " + count);
+    }
+
+    // Toggle full-screen mode
+    private void toggleFullScreen() {
+        GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice graphicsDevice = graphicsEnvironment.getDefaultScreenDevice();
+
+        if (frame.isUndecorated()) {
+            // Switch to windowed mode
+            frame.dispose();
+            frame.setUndecorated(false);
+            frame.setSize(800, 600); // Set a default size for windowed mode
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        } else if (graphicsDevice.isFullScreenSupported()) {
+            // Switch to full-screen mode
+            frame.dispose();
+            frame.setUndecorated(true);
+            frame.setSize(graphicsDevice.getDisplayMode().getWidth(), graphicsDevice.getDisplayMode().getHeight());
+            graphicsDevice.setFullScreenWindow(frame);
+        } else {
+            System.err.println("Full-screen mode not supported");
+        }
     }
 
     public static void main(String[] args) {
