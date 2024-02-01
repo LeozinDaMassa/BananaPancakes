@@ -65,7 +65,7 @@ public class ClickCount implements ActionListener {
             graphicsDevice.setFullScreenWindow(frame);
         } else {
             System.err.println("Full-screen mode not supported");
-            frame.setSize(800, 600); // Set a default size if full-screen mode is not supported
+            frame.setSize(800, 600); // Sets a default size if full-screen mode is not supported
         }
 
         frame.setVisible(true);
@@ -86,7 +86,7 @@ public class ClickCount implements ActionListener {
             // Switch to windowed mode
             frame.dispose();
             frame.setUndecorated(false);
-            frame.setSize(800, 600); // Set a default size for windowed mode
+            frame.setSize(800, 600); // Sets a default size for windowed mode
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         } else if (graphicsDevice.isFullScreenSupported()) {
